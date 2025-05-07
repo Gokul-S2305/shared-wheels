@@ -25,19 +25,24 @@ const RideRequestForm: React.FC<RideRequestFormProps> = ({
   };
 
   return (
-    <Card className="w-full shadow-md">
-      <CardHeader>
-        <CardTitle>Request a Ride</CardTitle>
+    <Card className="w-full shadow-lg border-none animate-fade-in">
+      <CardHeader className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-t-lg">
+        <CardTitle className="text-xl text-primary">Request a Ride</CardTitle>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <CardContent className="p-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <LocationInput
             label="Pickup Location"
             placeholder="Enter pickup address"
             value={pickup}
             onChange={setPickup}
             icon={<MapPin className="h-4 w-4 text-secondary" />}
+            className="transition-all focus-within:scale-[1.02]"
           />
+          
+          <div className="flex justify-center my-2">
+            <div className="w-px h-6 bg-gray-200"></div>
+          </div>
           
           <LocationInput
             label="Destination"
@@ -45,11 +50,12 @@ const RideRequestForm: React.FC<RideRequestFormProps> = ({
             value={destination}
             onChange={setDestination}
             icon={<Navigation className="h-4 w-4 text-primary" />}
+            className="transition-all focus-within:scale-[1.02]"
           />
           
           <Button 
             type="submit" 
-            className="w-full mt-6" 
+            className="w-full mt-6 py-6 text-base shadow-md transition-all hover:shadow-lg" 
             disabled={isLoading || !pickup || !destination}
           >
             {isLoading ? "Finding Drivers..." : "Request Ride"}
